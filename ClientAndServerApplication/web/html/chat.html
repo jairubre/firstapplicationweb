@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Chat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <h3>Mensajes</h3>
+        <div id="msgContainer"><ul id="msglist"></ul></div>
+        <h3>Mi mensaje</h3>
+        <textarea id="msgText" ></textarea>
+        <!--Ejemplo de acoplamiento fuerte
+        <button id="sebdbutton" onclick="enviarMensajes(document.getElementById('msgText.va'))"></button>
+        -->
+        
+        <!--Ejemplo de acoplamiento debil-->
+        <button id="sendbutton">Enviar</button>
+        
+        
+        <!-- <script src="../js/mensaje.js"></script> --> 
+        <!-- <script  src="../js/chatcontroller.js"></script> --> 
+        <!--Script de javi en clase para enlazar las clases -->
+       
+         <script type="module" src="../js/chatcontroller.js"></script> 
+     
+        
+    </body> 
+</html>
