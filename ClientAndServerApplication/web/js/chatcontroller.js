@@ -7,16 +7,17 @@ import {mensaje} from './mensaje.js'
 
 //Array de javaScript 
         var mensajes = new Array();
-//mensasjes es la colección de mensajes a mostrrar
+//Rnum de los días de la semana
+var msgDia = document.getElementById("msgDia");
+let diaHoy = document.createElement("li");
+let textoHoy = new Date().toLocaleDateString("es-ES",
+        {weekday: "long", day: "numeric", month: "long", year: "numeric"});
+;
+diaHoy.textContent = textoHoy.charAt(0).toUpperCase() + textoHoy.slice(1);
+msgDia.appendChild(diaHoy);
 
 function actualizarMensajes() {
-    //alert("Estas dentro de actualizar");
-    //ordenar los mensajes de mas recciente a mas antiguo
-
-
-
-    //Sirve para limpiar el ul cada vez q   ue hacemos una interración con el bucle
-    let  msglist = document.getElementById("msglist");
+    let msglist = document.getElementById("msglist");
     //poenemos nodo padre y va borrando mientras tenga hijos
     while (msglist.firstChild) {
         msglist.removeChild(msglist.firstChild);
@@ -29,8 +30,8 @@ function actualizarMensajes() {
         let li = document.createElement("li");
         //El añadimos el contenido del objeto
         // Formato corto estándar (ej: "25/9/2026")
-        let contenido = document.createTextNode(mensajes[i].gettexto + " " + 
-           new Date(mensajes[i].getfecha).toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}));
+        let contenido = document.createTextNode(mensajes[i].gettexto + " " +
+                new Date(mensajes[i].getfecha).toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}));
 
         li.appendChild(contenido);
 
@@ -84,3 +85,16 @@ document.getElementById("sendbutton").addEventListener('click', enviarMensaje);
 //DOMContentloaded Cada vez q cargar o actualizas la pagina salta esta acción y llama a la función
 document.addEventListener("DOMContentLoaded", actualizarMensajes());
 
+
+//Asociamos un listenner, en la funcion Keydow para uq cuando pulsemos enter nos envie el mensaje 
+document.getElementById("msgText").addEventListener("keydown",pulsarTecla);
+
+
+
+//Creamos la funcion para que reconozca la tecla enter
+function pulsarTecla(tecla){
+    if (tecla.key === "Enter") {
+        tecla.preventDefault();
+        enviarMensaje();
+    }
+}
